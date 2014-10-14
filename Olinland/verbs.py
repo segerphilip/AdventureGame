@@ -61,9 +61,12 @@ class Direction (Verb):
 class Look (Verb):
 
     def action0 (self):
-        Player.me.look_around()
+    	Player.me.look_around()
         return SAME_ROUND
 
+    def action1 (self, obj):
+    	obj.look(Player.me)
+    	return SAME_ROUND
 
 class Wait (Verb):
 

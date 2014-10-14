@@ -51,7 +51,7 @@ def create_world ():
     wh3rd = Room('West Hall 3', 'Sophomore homework lounge and Korra')
     wh4th = Room('West Hall 4', 'Drank.')
     whktchn = Room('West Hall Kitchen', 'Don\'t pull a Greg')
-    wh101 = Room('Chelsea\'s Room', 'The land of candy and condoms')
+    wh101 = Room('Chelsea\'slo Room', 'The land of candy and condoms')
     wh411 = Room('Philip\'s Room', 'The land of chill and loft')
 
 
@@ -74,21 +74,21 @@ def create_world ():
 
     # The player is the first 'thing' that has to be created
 
-    Player('Blubbering-Fool', oval)
+    Player('Blubbering-Fool', oval, '')
 
     Radar('handy radar',mh353) 
-    Thing('blackboard', ac113)
-    Thing('lovely-trees', oval)
-    Thing('leather couch', wh101)
-    Thing('foosball table', wh1st)
-    MobileThing('cs-book', oval)
-    MobileThing('math-book', oval)
-    MobileThing('kettle', whktchn)
-    MobileThing('Canada flag', wh411)
-    MobileThing('nerf gun', wh1st)
+    Thing('blackboard', ac113, '')
+    Thing('lovely-trees', oval, '')
+    Thing('leather couch', wh101, '')
+    Thing('foosball table', wh1st, '')
+    MobileThing('cs-book', oval, '')
+    MobileThing('math-book', oval, '')
+    MobileThing('kettle', whktchn, '')
+    MobileThing('Canada flag', wh411, '')
+    MobileThing('nerf gun', wh1st, '')
 
-    Computer('hal-9000', ac113)
-    Computer('johnny-5', easth)
+    Computer('hal-9000', ac113, '')
+    Computer('johnny-5', easth, '')
 
     Professor('Riccardo',mh353,random.randint(1,5),2)
     
