@@ -76,7 +76,7 @@ def create_world ():
 
     Player('Blubbering-Fool', oval, '')
 
-    Radar('handy radar',mh353) 
+    Radar('handy radar',mh353, '') 
     Thing('blackboard', ac113, '')
     Thing('lovely-trees', oval, '')
     Thing('leather couch', wh101, '')
@@ -90,7 +90,7 @@ def create_world ():
     Computer('hal-9000', ac113, '')
     Computer('johnny-5', easth, '')
 
-    Professor('Riccardo',mh353,random.randint(1,5),2)
+    Professor('Riccardo',mh353,random.randint(1,5),2,'')
     
     homeworks = ['hw-1', 
                  'hw-2',
@@ -112,7 +112,7 @@ def create_world ():
         NPC(student,
             random.choice(Room.rooms),
             random.randint(1,5),
-            random.randint(1,5))
+            random.randint(1,5),'')
 
     trolls = ['Polyphemus',
               'Gollum']
@@ -121,7 +121,7 @@ def create_world ():
       Troll(troll,
             random.choice(Room.rooms),
             random.randint(1,3),
-            random.randint(1,3))
+            random.randint(1,3),'')
 
 
 VERBS = {

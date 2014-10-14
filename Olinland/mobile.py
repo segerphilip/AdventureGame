@@ -3,7 +3,7 @@ from thing import *
 class MobileThing (Thing):
 
     def __init__ (self,name,loc,desc):
-        Thing.__init__(self,name,loc, desc)
+        Thing.__init__(self,name,loc,desc)
         self._original_location = loc
 
     def move (self,loc):
