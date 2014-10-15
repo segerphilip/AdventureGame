@@ -35,6 +35,7 @@ def biconnect (fr,dir,to):
 
 
 def create_world ():
+    radarInfo=[]
 
     mh353 = Room('Riccardo Office', 'The place where Riccardo lives')
     mh3rd = Room('Milas Hall Third Floor', 'Third floor of Milas hall')
@@ -51,9 +52,8 @@ def create_world ():
     wh3rd = Room('West Hall 3', 'Sophomore homework lounge and Korra')
     wh4th = Room('West Hall 4', 'Drank.')
     whktchn = Room('West Hall Kitchen', 'Don\'t pull a Greg')
-    wh101 = Room('Chelsea\'slo Room', 'The land of candy and condoms')
+    wh101 = Room('Chelsea\'s Room', 'The land of candy and condoms')
     wh411 = Room('Philip\'s Room', 'The land of chill and loft')
-
 
     biconnect(mh353, 'east',  mh3rd)
     biconnect(mh3rd, 'down',  mh2nd)
@@ -74,23 +74,23 @@ def create_world ():
 
     # The player is the first 'thing' that has to be created
 
-    Player('Blubbering-Fool', oval, '')
+    radarInfo.append(Player('Blubbering-Fool', oval, ''))
 
-    Radar('handy radar',mh353, '') 
-    Thing('blackboard', ac113, '')
-    Thing('lovely-trees', oval, '')
-    Thing('leather couch', wh101, '')
-    Thing('foosball table', wh1st, '')
-    MobileThing('cs-book', oval, '')
-    MobileThing('math-book', oval, '')
-    MobileThing('kettle', whktchn, '')
-    MobileThing('Canada flag', wh411, '')
-    MobileThing('nerf gun', wh1st, '')
+    
+    radarInfo.append(Thing('blackboard', ac113, 'You wrong on it.'))
+    radarInfo.append(Thing('lovely-trees', oval, 'They are very lovely.'))
+    radarInfo.append(Thing('leather couch', wh101, 'Plop right down and have a chat.'))
+    radarInfo.append(Thing('foosball table', wh1st, 'Such foos, much ball.'))
+    radarInfo.append(MobileThing('cs-book', oval, 'Sounds like you\'re a NERD!!!!'))
+    radarInfo.append(MobileThing('math-book', oval, 'Sounds like you\'re a NERD!!!!'))
+    radarInfo.append(MobileThing('kettle', whktchn, 'Keep this away from Greg.'))
+    radarInfo.append(MobileThing('Canada flag', wh411, 'No other flags are needed.'))
+    radarInfo.append(MobileThing('nerf gun', wh1st, 'Point away from eyes.'))
 
-    Computer('hal-9000', ac113, '')
-    Computer('johnny-5', easth, '')
+    radarInfo.append(Computer('hal-9000', ac113, 'Super smart.'))
+    radarInfo.append(Computer('johnny-5', easth, 'Super smart.'))
 
-    Professor('Riccardo',mh353,random.randint(1,5),2,'')
+    radarInfo.append(Professor('Riccardo',mh353,random.randint(1,5),2,''))
     
     homeworks = ['hw-1', 
                  'hw-2',
@@ -100,8 +100,9 @@ def create_world ():
                  'hw-6']
     
     for homework in homeworks:
-        Homework(homework,
-                 random.choice(Room.rooms))
+        radarInfo.append(Homework(homework,
+                 random.choice(Room.rooms),
+                 'Ew, homework!'))
 
     students = ['Frankie Freshman',
                 'Joe Junior',
@@ -109,19 +110,21 @@ def create_world ():
                 'Cedric Senior']
 
     for student in students:
-        NPC(student,
+        radarInfo.append(NPC(student,
             random.choice(Room.rooms),
             random.randint(1,5),
-            random.randint(1,5),'')
+            random.randint(1,5),'These are friends, not food.'))
 
     trolls = ['Polyphemus',
               'Gollum']
 
     for troll in trolls:
-      Troll(troll,
+      radarInfo.append(Troll(troll,
             random.choice(Room.rooms),
             random.randint(1,3),
-            random.randint(1,3),'')
+            random.randint(1,3),'These are trolls, and food!'))
+
+    Radar('handy radar',mh353, 'Oh hey look, a radar!',radarInfo) 
 
 
 VERBS = {
