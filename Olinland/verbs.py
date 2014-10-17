@@ -112,5 +112,3 @@ class Give (Verb):
     def action2 (self,obj1,obj2):
         obj1.give(Player.me,obj2)
         return SAME_ROUND
-
-        

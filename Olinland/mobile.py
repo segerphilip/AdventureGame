@@ -14,6 +14,18 @@ class MobileThing (Thing):
     def creation_site (self):
         return self._original_location
 
+    def take (self,actor):
+    	self.move(actor)
+    	actor.say('I pick up ' +self.name())
+
+    def drop (self,actor):
+    	self.move(actor)
+    	actor.say('I drop ' +self.name())
+
+    def give (self,actor,target):
+    	self.move(target)
+        actor.say('I give ' + self.name() + ' to ' + target.name())
+        print self._location.name()
+
     def is_mobile_thing (self):
         return True
-

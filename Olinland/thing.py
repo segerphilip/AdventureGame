@@ -1,16 +1,17 @@
 from wobject import *
 from player import *
+from location import *
 
-class Thing (WObject):
+class Thing (Location):
 
     def __init__ (self,name,loc,desc):
-        WObject.__init__(self,name)
+        Location.__init__(self,name)
         self._location = loc
         self.desc = desc
         loc.add_thing(self)
 
     def look (self, actor):
-    	actor.say(self.desc)
+        actor.say(self.desc)
 
     def use (self,actor):
         actor.say('I try to use '+self.name()+' but nothing happens')

@@ -27,6 +27,9 @@ class Player (Person):
         for x in self.peek_around():
             if x.name() == name:
                 return x
+        for x in self.inventory():
+        	if x.name() == name:
+        		return x
         return None
 
     def look_around (self):
@@ -37,6 +40,7 @@ class Player (Person):
         exits = loc.exits()
         people = self.people_around()
         all_stuff = self.stuff_around()
+        inventory = self.inventory()
 
         print '------------------------------------------------------------'
         print 'You are in', loc.name()
@@ -46,6 +50,11 @@ class Player (Person):
             print 'You see:', names(all_stuff)
         else: 
             print 'The room is empty'
+
+        if inventory:
+        	print 'You have:', names(inventory)
+        else:
+        	print 'You aren\'t carrying anything'
 
         if people:
             print 'You see:', names(people)
