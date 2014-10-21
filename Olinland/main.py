@@ -65,6 +65,7 @@ def create_world ():
     biconnect(wh3rd, 'down', wh2nd)
     biconnect(wh4th, 'down', wh3rd)
     biconnect(wh1st, 'west', wh101)
+    biconnect(wh101, 'west', oval)
     biconnect(wh4th, 'east', wh411)
     biconnect(wh1st, 'north', whktchn)
     biconnect(wh1st, 'east',  easth)
@@ -129,7 +130,9 @@ def create_world ():
 
 VERBS = {
     'quit' : Quit(),
+    'die'  : Die(),
     'look' : Look(),
+    'peek' : Peek(),
     'wait' : Wait(),
     'take' : Take(),
     'drop' : Drop(),

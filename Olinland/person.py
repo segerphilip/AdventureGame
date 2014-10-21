@@ -33,8 +33,14 @@ class Person (MobileThing):    # Container...
         return [x for x in self._contents]
 
     def peek_around (self):
-        # FIX ME
-        return []
+        objects = []
+        npcs = self.people_around()
+        for npc in npcs:
+            inventory = npc.inventory()
+            for obj in inventory:
+                print npc.name() + ' is carrying ' + obj.name()
+                objects.append(obj)
+        return objects
 
     def lose (self,t,loseto):
         self.say('I lose ' + t.name())
@@ -66,8 +72,11 @@ class Person (MobileThing):    # Container...
 
     def die (self):
         self.location().broadcast('An earth-shattering, soul-piercing scream is heard...')
+        inventory = self.inventory()
+        for pos in inventory:
+                pos.move(self._location)
+        self.say('I drop everything and die!')
         self.destroy()
-        
 
     def enter_room (self):
         people = self.people_around()

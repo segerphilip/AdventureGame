@@ -19,12 +19,13 @@ class MobileThing (Thing):
     	actor.say('I pick up ' +self.name())
 
     def drop (self,actor):
-    	self.move(actor)
+    	self.move(actor._location)
     	actor.say('I drop ' +self.name())
 
     def give (self,actor,target):
     	self.move(target)
         actor.say('I give ' + self.name() + ' to ' + target.name())
+        target.accept(self,actor)
         print self._location.name()
 
     def is_mobile_thing (self):

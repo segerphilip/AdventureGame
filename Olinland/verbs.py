@@ -46,6 +46,12 @@ class Quit (Verb):
         print 'Goodbye'
         sys.exit(0)
 
+class Die (Verb):
+
+	def action0 (self):
+		print 'bleh'
+		Player.me.die()
+
 
 class Direction (Verb):
     def __init__ (self,dir):
@@ -67,6 +73,12 @@ class Look (Verb):
     def action1 (self, obj):
     	obj.look(Player.me)
     	return SAME_ROUND
+
+class Peek (Verb):
+
+	def action0 (self):
+		Player.me.peek_around()
+		return SAME_ROUND
 
 class Wait (Verb):
 
