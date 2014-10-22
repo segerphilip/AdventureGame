@@ -15,8 +15,8 @@ class MobileThing (Thing):
         return self._original_location
 
     def take (self,actor):
+    	actor.say('I take ' +self.name() + ' from ' + self._location.name())
     	self.move(actor)
-    	actor.say('I pick up ' +self.name())
 
     def drop (self,actor):
     	self.move(actor._location)

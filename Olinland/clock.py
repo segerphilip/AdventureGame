@@ -7,9 +7,13 @@ class Clock (object):
 
     def register (self,func,priority):
         self.funcs.append([priority,func])
+        sorted(self.funcs)
+
+    def unregister (self,func,priority):
+        self.funcs.remove([priority,func])
 
     def tick (self):
-        sorted(self.funcs)
         for func in self.funcs:
-            func(self.time)
+            func[1](self.time)
         self.time += 1
+        return self.time

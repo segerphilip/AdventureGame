@@ -25,9 +25,13 @@ class Person (MobileThing):    # Container...
                     if x.is_person() and x is not self]
 
     def stuff_around (self):
-        return [x for x in self.location().contents() if not x.is_person()]
-    # this function should return everything that everyone in the
-    # same location as this person are holding/carrying
+        stuff = []
+        if self.peek_around():
+            stuff.append(self.peek_around())
+        for x in self.location().contents():
+            if not x.is_person():
+                stuff.append(x)
+        return [x for x in stuff]
 
     def inventory (self):
         return [x for x in self._contents]
@@ -38,9 +42,8 @@ class Person (MobileThing):    # Container...
         for npc in npcs:
             inventory = npc.inventory()
             for obj in inventory:
-                print npc.name() + ' is carrying ' + obj.name()
                 objects.append(obj)
-        return objects
+        return [x for x in objects]
 
     def lose (self,t,loseto):
         self.say('I lose ' + t.name())

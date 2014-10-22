@@ -102,8 +102,6 @@ class Use (Verb):
         obj.use(Player.me)
         return SAME_ROUND
 
-
-
 class Take (Verb):
 
     def action1 (self,obj):

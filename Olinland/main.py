@@ -10,6 +10,9 @@ from troll import *
 from professor import *
 from homework import *
 from computer import *
+from trollhunter import *
+from badninja import *
+from butterfly import *
 
 
 REVERSE = {
@@ -119,11 +122,39 @@ def create_world ():
     trolls = ['Polyphemus',
               'Gollum']
 
+    trollexist = []
+
     for troll in trolls:
-      radarInfo.append(Troll(troll,
+      current_troll = Troll(troll,
             random.choice(Room.rooms),
             random.randint(1,3),
-            random.randint(1,3),'These are trolls, and food!'))
+            random.randint(1,3),'These are trolls, and food!')
+      radarInfo.append(current_troll)
+      trollexist.append(current_troll)
+
+    radarInfo.append(TrollHunter('Sven',
+                random.choice(Room.rooms),
+                random.randint(1,3),
+                random.randint(1,3),
+                trollexist,
+                'Bad ass of the highest degree! (troll hunter)'))
+
+    radarInfo.append(BadNinja('Edgar allen PoE',
+             random.choice(Room.rooms),
+             random.randint(1,3),
+             random.randint(1,3),
+             'Watch out for this pyro!'))
+
+    butterflies =  ['Charlie',
+                    'Austin',
+                    'Margaret-Ann']
+
+    for fly in butterflies:
+        radarInfo.append(Caterpillar(fly,
+                random.choice(Room.rooms),
+                random.randint(1,3),
+                random.randint(1,3),
+                'ERMAGHERDACARTERTIRAR'))
 
     Radar('handy radar',mh353, 'Oh hey look, a radar!',radarInfo) 
 
@@ -144,7 +175,13 @@ VERBS = {
     'east' : Direction('east'),
     'west' : Direction('west'),
     'up'   : Direction('up'),
-    'down' : Direction('down')
+    'down' : Direction('down'),
+    'n' : Direction('north'),
+    's' : Direction('south'),
+    'e' : Direction('east'),
+    'w' : Direction('west'),
+    'u' : Direction('up'),
+    'd' : Direction('down')
 }
   
 
@@ -179,6 +216,8 @@ def main ():
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
                 Player.me.look_around()
+                t = Player.clock.tick()
+                print_tick_action(t)
         else:
             print 'What??'
             

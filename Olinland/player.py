@@ -28,8 +28,8 @@ class Player (Person):
             if x.name() == name:
                 return x
         for x in self.inventory():
-        	if x.name() == name:
-        		return x
+            if x.name() == name:
+                return x
         return None
 
     def look_around (self):
@@ -52,9 +52,9 @@ class Player (Person):
             print 'The room is empty'
 
         if inventory:
-        	print 'You have:', names(inventory)
+            print 'You have:', names(inventory)
         else:
-        	print 'You aren\'t carrying anything'
+            print 'You aren\'t carrying anything'
 
         if people:
             print 'You see:', names(people)

@@ -8,6 +8,7 @@ class NPC (Person):
         Person.__init__(self,name,loc,desc)
         self._restlessness = restlessness
         self._miserly = miserly
+        Player.clock.register(self.move_and_take_stuff,3)
         
     def move_and_take_stuff (self,time):
         if not self.is_in_limbo():
@@ -24,8 +25,15 @@ class NPC (Person):
 
     def take_something (self):
         everything = []
-        everything.extend(self.stuff_around())
-        everything.extend(self.peek_around())
+        stuff = self.stuff_around()
+        # peek = self.peek_around()
+        print stuff
+        if stuff:
+        	everything.extend(stuff)
+        print everything
+        # may add back, just because redefinition of peek
+        # if peek:
+        # 	everything.extend(peek)
         if everything:
             something = random.choice(everything)
             something.take(self)
