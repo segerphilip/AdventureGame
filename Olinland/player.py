@@ -2,6 +2,7 @@ from person import *
 from clock import *
 
 import sys
+import random
 
 class Player (Person):
 
@@ -11,6 +12,7 @@ class Player (Person):
     god_mode = False
     # static field representing the clock
     clock = Clock(0)
+    follower = None
 
     def __init__ (self,name,loc,desc):
         Person.__init__(self,name,loc,desc)
@@ -66,6 +68,46 @@ class Player (Person):
         else:
             print 'There are no exits'
 
+    def sing (self):
+        self.say('\nMy Anaconda don\'t...\nMy Anaconda don\'t... \nMy Anaconda don\'t want none unless you got buns hun')
+        people = self.people_around()
+        if people:
+            for victim in people:
+                if victim == self.follower:
+                    victim.say('Your voice is BEAUTIFUL!!!')
+                else:
+                    victim.say('Your voice, it\'s TERRIBLE!!!')
+                    victim.suffer(1)                
+
+    def twerk (self):
+        if self.follower == None:
+            people = self.people_around()
+            if people:
+                friend = random.choice(people)
+                friend.say('Those Bunnnns, Hun! I\'m yours forever')
+                friend.follower()
+        else:
+            self.follower.say('How dare you to try to replace me.')
+
+    def go (self,direction):
+        loc = self.location()
+        exits = loc.exits()
+        if direction in exits:
+            t = exits[direction]
+            self.leave_room()
+            loc.report(self.name()+' moves from '+ loc.name()+' to '+t.name())
+            self.move(t)
+            self.enter_room()
+            if self.follower != None:
+                t = exits[direction]
+                self.follower.leave_room()
+                t.report(self.follower.name()+' follows '+ self.name()+' to '+t.name())
+                self.follower.move(t)
+                self.follower.enter_room()
+            return True
+        else:
+            print 'No exit in direction', direction
+            return False
 
     def die (self):
         self.say('I am slain!')

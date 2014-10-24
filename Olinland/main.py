@@ -149,11 +149,14 @@ def create_world ():
                     'Austin',
                     'Margaret-Ann']
 
-    for fly in butterflies:
-        radarInfo.append(Caterpillar(fly,
+    cocage = [3,4,2]
+    butage = [2,3,7]
+
+    for i in range(len(butterflies)):
+        radarInfo.append(Caterpillar(butterflies[i],
                 random.choice(Room.rooms),
-                random.randint(1,3),
-                random.randint(1,3),
+                cocage[i],
+                butage[i],
                 'ERMAGHERDACARTERTIRAR'))
 
     Radar('handy radar',mh353, 'Oh hey look, a radar!',radarInfo) 
@@ -169,7 +172,10 @@ VERBS = {
     'drop' : Drop(),
     'give' : Give(),
     'god'  : God(),
+    'sing' : Sing(),
+    'twerk': Twerk(),
     'use'  : Use(),
+    'play' : Play(), #attempted an implementation, ran out of time
     'north' : Direction('north'),
     'south' : Direction('south'),
     'east' : Direction('east'),

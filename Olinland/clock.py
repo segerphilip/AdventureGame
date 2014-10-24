@@ -1,4 +1,5 @@
 
+
 class Clock (object):
 
     def __init__ (self,time):
@@ -7,7 +8,9 @@ class Clock (object):
 
     def register (self,func,priority):
         self.funcs.append([priority,func])
-        sorted(self.funcs)
+        # print self.funcs
+        self.funcs.sort()
+        # print self.funcs
 
     def unregister (self,func,priority):
         self.funcs.remove([priority,func])

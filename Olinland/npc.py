@@ -26,14 +26,8 @@ class NPC (Person):
     def take_something (self):
         everything = []
         stuff = self.stuff_around()
-        # peek = self.peek_around()
-        print stuff
         if stuff:
         	everything.extend(stuff)
-        print everything
-        # may add back, just because redefinition of peek
-        # if peek:
-        # 	everything.extend(peek)
         if everything:
             something = random.choice(everything)
             something.take(self)
@@ -41,3 +35,7 @@ class NPC (Person):
     def die (self):
         self.say('SHREEEEEK! I, uh, suddenly feel very faint...')
         Person.die(self)
+
+    def follower(self):
+        Player.clock.unregister(self.move_and_take_stuff,3)
+        Player.follower = self

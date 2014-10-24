@@ -16,6 +16,9 @@ class Thing (Location):
     def use (self,actor):
         actor.say('I try to use '+self.name()+' but nothing happens')
 
+    def play (self,actor):
+        actor.say('I can\'t play with that!')
+
     def take (self,actor):
         actor.say('I try to take '+self.name()+" but can't")
 

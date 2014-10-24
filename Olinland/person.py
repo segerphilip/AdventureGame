@@ -26,8 +26,10 @@ class Person (MobileThing):    # Container...
 
     def stuff_around (self):
         stuff = []
-        if self.peek_around():
-            stuff.append(self.peek_around())
+        peek_around = self.peek_around()
+        if peek_around:
+            for peek in peek_around:
+                stuff.append(peek)
         for x in self.location().contents():
             if not x.is_person():
                 stuff.append(x)

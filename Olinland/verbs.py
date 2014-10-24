@@ -71,14 +71,14 @@ class Look (Verb):
         return SAME_ROUND
 
     def action1 (self, obj):
-    	obj.look(Player.me)
-    	return SAME_ROUND
+        obj.look(Player.me)
+        return SAME_ROUND
 
 class Peek (Verb):
 
-	def action0 (self):
-		Player.me.peek_around()
-		return SAME_ROUND
+    def action0 (self):
+        Player.me.peek_around()
+        return SAME_ROUND
 
 class Wait (Verb):
 
@@ -95,11 +95,28 @@ class God (Verb):
         print '(God mode is now','on)' if Player.god_mode else 'off)'
         return SAME_ROUND
 
+class Sing (Verb):
+
+    def action0 (self):
+        Player.me.sing()
+        return SAME_ROUND
+
+class Twerk (Verb):
+
+    def action0 (self):
+        Player.me.twerk()
+        return SAME_ROUND
 
 class Use (Verb):
 
     def action1 (self,obj):
         obj.use(Player.me)
+        return SAME_ROUND
+
+class Play (Verb):
+
+    def action1 (self,obj):
+        obj.play(Player.me)
         return SAME_ROUND
 
 class Take (Verb):
